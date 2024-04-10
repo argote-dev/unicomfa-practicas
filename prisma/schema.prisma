@@ -16,3 +16,17 @@ model User {
   birth_date DateTime
   create_at  DateTime @default(now())
 }
+
+model Document {
+  id           Int          @id @default(autoincrement())
+  url          String
+  date         DateTime
+  typeId       Int
+  typeDocument TypeDocument @relation(fields: [typeId], references: [id])
+}
+
+model TypeDocument {
+  id       Int        @id @default(autoincrement())
+  name     String
+  Document Document[]
+}
