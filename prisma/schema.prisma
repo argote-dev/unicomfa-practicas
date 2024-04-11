@@ -16,3 +16,43 @@ model User {
   birth_date DateTime
   create_at  DateTime @default(now())
 }
+
+model Document {
+  id           Int          @id @default(autoincrement())
+  url          String
+  date         DateTime
+  typeId       Int
+  typeDocument TypeDocument @relation(fields: [typeId], references: [id])
+}
+
+model TypeDocument {
+  id       Int        @id @default(autoincrement())
+  name     String
+  Document Document[]
+}
+
+model Process {
+  id              Int           @id @default(autoincrement())
+  aproved        Boolean
+  typeId          Int
+  typeProcess     TypeProcess   @relation(fields: [typeId], references: [id])
+  statusProcessId Int
+  statusProcess   StatusProcess @relation(fields: [statusProcessId], references: [id])
+}
+
+model TypeProcess {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Process Process[]
+}
+
+model Return {
+  id          Int    @id @default(autoincrement())
+  description String
+}
+
+model StatusProcess {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Process Process[]
+}
