@@ -8,15 +8,25 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  name       String
-  last_name  String
-  address    String
-  birth_date DateTime
-  idProgram  Int
-  program    Program? @relation(fields: [idProgram], references: [id])
-  create_at  DateTime @default(now())
+  id                 Int              @id @default(autoincrement())
+  email              String           @unique
+  name               String
+  last_name          String
+  address            String
+  birth_date         DateTime
+  idProgram          Int
+  program            Program?         @relation(fields: [idProgram], references: [id])
+  create_at          DateTime         @default(now())
+  idCompamy          Int
+  company            Company          @relation(fields: [idCompamy], references: [id])
+  idTypeDocument     Int
+  typeDocumet        TypeDocument     @relation(fields: [idTypeDocument], references: [id])
+  idTypeMunicipality Int
+  typeMunicipality   TypeMunicipality @relation(fields: [idTypeMunicipality], references: [id])
+  idTypeUser         Int
+  typeUser           TypeUser         @relation(fields: [idTypeUser], references: [id])
+  UserOnProcess      UserOnProcess[]
+  Document           Document[]
 }
 
 model Document {
@@ -25,12 +35,15 @@ model Document {
   date         DateTime
   typeId       Int
   typeDocument TypeDocument @relation(fields: [typeId], references: [id])
+  userId       Int
+  user         User         @relation(fields: [userId], references: [id])
 }
 
 model TypeDocument {
   id       Int        @id @default(autoincrement())
   name     String
   Document Document[]
+  User     User[]
 }
 
 model Process {
@@ -41,6 +54,15 @@ model Process {
   statusProcessId Int
   statusProcess   StatusProcess     @relation(fields: [statusProcessId], references: [id])
   ProcessOnReturn ProcessOnReturn[]
+  UserOnProcess   UserOnProcess[]
+}
+
+model UserOnProcess {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  processId Int
+  process   Process @relation(fields: [processId], references: [id])
 }
 
 model TypeProcess {
@@ -82,4 +104,35 @@ model Faculty {
   id      Int       @id @default(autoincrement())
   name    String
   Program Program[]
+}
+
+model Company {
+  id               Int    @id @default(autoincrement())
+  nit              Int
+  name             String
+  date_association String
+  address          String
+  phone            Int
+  email            String
+  User             User[]
+}
+
+model TypeUser {
+  id   Int    @id @default(autoincrement())
+  name String
+  User User[]
+}
+
+model TypeMunicipality {
+  id               Int            @id @default(autoincrement())
+  name             String
+  typedepartmentId Int
+  typeDepartemnet  Typedepartment @relation(fields: [typedepartmentId], references: [id])
+  User             User[]
+}
+
+model Typedepartment {
+  id               Int                @id @default(autoincrement())
+  name             String
+  TypeMunicipality TypeMunicipality[]
 }
