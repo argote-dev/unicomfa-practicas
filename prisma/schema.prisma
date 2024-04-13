@@ -13,8 +13,8 @@ model User {
   name       String
   last_name  String
   address    String
-  birth_date DateTime
-  idProgram  Int
+  birth_date String
+  idProgram  Int?
   program    Program? @relation(fields: [idProgram], references: [id])
   create_at  DateTime @default(now())
 }
