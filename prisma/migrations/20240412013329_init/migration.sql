@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "ProcessOnReturn" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "processId" INTEGER NOT NULL,
+    "returnId" INTEGER NOT NULL,
+    "createAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "ProcessOnReturn_processId_fkey" FOREIGN KEY ("processId") REFERENCES "Process" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "ProcessOnReturn_returnId_fkey" FOREIGN KEY ("returnId") REFERENCES "Return" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
