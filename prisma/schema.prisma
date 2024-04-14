@@ -14,11 +14,11 @@ model User {
   last_name          String
   address            String
   birth_date         DateTime
-  idProgram          Int
+  idProgram          Int?
   program            Program?         @relation(fields: [idProgram], references: [id])
   create_at          DateTime         @default(now())
-  idCompamy          Int
-  company            Company          @relation(fields: [idCompamy], references: [id])
+  idCompamy          Int?
+  company            Company?         @relation(fields: [idCompamy], references: [id])
   idTypeDocument     Int
   typeDocumet        TypeDocument     @relation(fields: [idTypeDocument], references: [id])
   idTypeMunicipality Int
