@@ -3,11 +3,13 @@ const router = express.Router();
 
 const UserRepository = require('../repository/user.repository');
 const CreateUserUseCase = require('../../usecase/create.usecase');
+const ListUsersUseCase = require('../../usecase/list.usecase');
 const UserController = require('../controller/user.controller');
 
 const userRepository = new UserRepository();
 const createUserUseCase = new CreateUserUseCase(userRepository);
-const userController = new UserController(createUserUseCase);
+const listUsersUseCase = new ListUsersUseCase(userRepository);
+const userController = new UserController(createUserUseCase, listUsersUseCase);
 
 /**
  * @swagger
@@ -61,15 +63,70 @@ router.post('/', async (req, res) => {
 
 /**
  * @swagger
- * api/v1/users:
+ * /api/v1/users:
  *   get:
  *     tags:
- *      - Users
- *     summary: Get all users register in db
+ *       - Users
+ *     summary: Get all users registered in the database
  *     description: List of all users.
+ *     responses:
+ *       '200':
+ *         description: Users found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   format: int64
+ *                   example: 1
+ *                 email:
+ *                   type: string
+ *                   format: email
+ *                   example: alopez@unicomfacauca.edu.co
+ *                 name:
+ *                   type: string
+ *                   example: Andres
+ *                 last_name:
+ *                   type: string
+ *                   example: Lopez
+ *                 address:
+ *                   type: string
+ *                   example: Calle 2
+ *                 birth_date:
+ *                   type: string
+ *                   format: date
+ *                   example: "2000-03-22"
+ *                 idProgram:
+ *                   type: integer
+ *                   format: int64
+ *                   nullable: true
+ *                   example: null
+ *                 create_at:
+ *                   type: string
+ *                   format: date-time
+ *                   example: "2024-04-14T00:51:26.505Z"
+ *                 idCompamy:
+ *                   type: integer
+ *                   format: int64
+ *                   nullable: true
+ *                   example: null
+ *                 idTypeDocument:
+ *                   type: integer
+ *                   format: int64
+ *                   example: 1
+ *                 idTypeMunicipality:
+ *                   type: integer
+ *                   format: int64
+ *                   example: 1
+ *                 idTypeUser:
+ *                   type: integer
+ *                   format: int64
+ *                   example: 1
  */
-router.get('/', (req, res) => {
-  res.send('GET');
+router.get('/', async (req, res) => {
+  await userController.listAllUsers(req, res);
 });
 
 /**

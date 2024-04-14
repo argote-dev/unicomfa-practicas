@@ -7,7 +7,7 @@ module.exports = class UserRepository {
     await prisma.user.create({ data: user });
   };
   list = async () => {
-    return await prisma.user.findAny();
+    return await prisma.user.findMany();
   };
   update = async (user) => {
     return await prisma.user.update({
