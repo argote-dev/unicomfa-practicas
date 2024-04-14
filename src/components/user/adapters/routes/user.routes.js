@@ -4,12 +4,16 @@ const router = express.Router();
 const UserRepository = require('../repository/user.repository');
 const CreateUserUseCase = require('../../usecase/create.usecase');
 const ListUsersUseCase = require('../../usecase/list.usecase');
+const UpdateUserUseCase = require('../../usecase/update.usecase');
+const DeleteUserUsecase = require('../../usecase/delete.usecase');
 const UserController = require('../controller/user.controller');
 
 const userRepository = new UserRepository();
 const createUserUseCase = new CreateUserUseCase(userRepository);
 const listUsersUseCase = new ListUsersUseCase(userRepository);
-const userController = new UserController(createUserUseCase, listUsersUseCase);
+const updatUserUseCase = new UpdateUserUseCase(userRepository);
+const deleteUserUseCase = new DeleteUserUsecase(userRepository);
+const userController = new UserController(createUserUseCase, listUsersUseCase, updatUserUseCase, deleteUserUseCase);
 
 /**
  * @swagger
@@ -137,22 +141,73 @@ router.get('/', async (req, res) => {
  *      - Users
  *     summary: Update user
  *     description: Update info of user.
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: David
+ *              last_name:
+ *                 type: string
+ *                 example: Argote
+ *              address:
+ *                 type: string
+ *                 example: Cr 25N
+ *              email:
+ *                 type: string
+ *                 format: email
+ *                 example: argote@unicomfacauca.edu.co
+ *              birth_date:
+ *                 type: string
+ *                 example: 18/06/2000
+ *              type_document:
+ *                 type: int
+ *                 example: 1
+ *              type_user:
+ *                 type: int
+ *                 example: 1
+ *              type_municipality:
+ *                 type: int
+ *                 example: 1
+ *     responses:
+ *          '200':
+ *             description: User created
+ *          '500':
+ *             description: Server error
  */
-router.put('/', (req, res) => {
-  res.send('PUT');
+router.put('/', async (req, res) => {
+  await userController.updateUserInfo(req, res);
 });
 
 /**
  * @swagger
- * api/v1/users:
+ * /api/v1/users/{id}:
  *   delete:
  *     tags:
- *      - Users
+ *       - Users
  *     summary: Delete user by id
  *     description: Delete register of user.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: id of user
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: User deleted
+ *       '404':
+ *         description: User not found
+ *       '500':
+ *         description: Server internal error
  */
-router.delete('/', (req, res) => {
-  res.send('DELETE');
+router.delete('/:id', async (req, res) => {
+  await userController.deleteUserById(req, res);
 });
 
 module.exports = router;
