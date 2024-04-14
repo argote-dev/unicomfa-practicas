@@ -13,7 +13,7 @@ model User {
   name               String
   last_name          String
   address            String
-  birth_date         DateTime
+  birth_date         String
   idProgram          Int?
   program            Program?         @relation(fields: [idProgram], references: [id])
   create_at          DateTime         @default(now())
@@ -126,12 +126,12 @@ model TypeUser {
 model TypeMunicipality {
   id               Int            @id @default(autoincrement())
   name             String
-  typedepartmentId Int
-  typeDepartemnet  Typedepartment @relation(fields: [typedepartmentId], references: [id])
+  typeDepartmentId Int
+  typeDepartment   TypeDepartment @relation(fields: [typeDepartmentId], references: [id])
   User             User[]
 }
 
-model Typedepartment {
+model TypeDepartment {
   id               Int                @id @default(autoincrement())
   name             String
   TypeMunicipality TypeMunicipality[]

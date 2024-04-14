@@ -38,8 +38,17 @@ const userController = new UserController(createUserUseCase);
  *                 format: email
  *                 example: argote@unicomfacauca.edu.co
  *              birth_date:
- *                type: string
- *                example: 18/06/2000
+ *                 type: string
+ *                 example: 18/06/2000
+ *              type_document:
+ *                 type: int
+ *                 example: 1
+ *              type_user:
+ *                 type: int
+ *                 example: 1
+ *              type_municipality:
+ *                 type: int
+ *                 example: 1
  *     responses:
  *          '201':
  *             description: User created

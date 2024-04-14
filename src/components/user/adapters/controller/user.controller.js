@@ -4,9 +4,18 @@ module.exports = class UserController {
   }
 
   async insertUser(req, res) {
-    const { name, last_name, address, birth_date, email } = req.body;
+    const { name, last_name, address, birth_date, email, type_document, type_municipality, type_user } = req.body;
     try {
-      await this.createUser.execute({ name, last_name, address, birth_date, email });
+      await this.createUser.execute({
+        name,
+        last_name,
+        address,
+        birth_date,
+        email,
+        type_document,
+        type_municipality,
+        type_user,
+      });
       res.status(201).send({ data: {}, errro: {} });
     } catch (e) {
       console.log(e);

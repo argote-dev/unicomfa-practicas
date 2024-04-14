@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon",
-    "migrate:db": "npx prisma migrate dev --name init"
+    "migrate:db": "npx prisma migrate dev --name init",
+    "seed": "node src/utils/seed.js"
   },
   "keywords": [],
   "author": "David Argote",
