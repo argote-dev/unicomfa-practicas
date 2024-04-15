@@ -7,6 +7,7 @@ const port = app.get('port');
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use('/api/v1/users', require('./components/user/adapters/routes/user.routes'));
+app.use('/api/v1/processOnReturn', require('./components/processOnReturn/adapters/routes/processOnReturn.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
