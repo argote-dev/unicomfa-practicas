@@ -13,12 +13,12 @@ const processOnReturnController = new ProcessOnReturnController(createProcessOnR
 
 /**
  * @swagger
- * api/v1/users:
+ * api/v1/processOnReturn:
  *   post:
  *     tags:
- *      - Process
- *     summary: Insert new user
- *     description: Save user into db.
+ *      - ProcessOnReturn
+ *     summary: Insert new processOnReturn
+ *     description: Save processOnReturn into db.
  *     requestBody:
  *      required: true
  *      content:
@@ -29,27 +29,27 @@ const processOnReturnController = new ProcessOnReturnController(createProcessOnR
  *             
  *     responses:
  *          '201':
- *             description: User created
+ *             description: ProcessOnReturn created
  *          '500':
  *             description: Server error
  */
 
 router.post('/', async (req, res) => {
-  await processOnReturnController.insertUser(req, res);
+  await processOnReturnController.insertProcessOnReturn(req, res);
 });
 
 /**
 * @swagger
-* /api/v1/users:
+* /api/v1/processOnReturn:
 *   get:
 *     tags:
-*       - Process
-*     summary: Get all users registered in the database
-*     description: List of all users.
+*       - ProcessOnReurn
+*     summary: Get all processOnReturn registered in the database
+*     description: List of all processOnReturn.
 *     responses:
 * 
 *       '200':
-*         description: Users found
+*         description: ProcessOnReturn found
 *         content:
 *           application/json:
 *             schema:
@@ -58,17 +58,17 @@ router.post('/', async (req, res) => {
 *                
 */
 router.get('/', async (req, res) => {
-  await ProcessOnReturnController.listAllUsers(req, res);
+  await ProcessOnReturnController.listAllProcessOnReturn(req, res);
 });
 
 /**
 * @swagger
-* api/v1/users:
+* api/v1/proccessOnReturn:
 *   put:
 *     tags:
 *      - Process
-*     summary: Update user
-*     description: Update info of user.
+*     summary: Update processOnReturn
+*     description: Update info of processOnReturn.
 */
 router.put('/', (req, res) => {
   res.send('PUT');
@@ -76,11 +76,11 @@ router.put('/', (req, res) => {
 
 /**
 * @swagger
-* api/v1/users:
+* api/v1/processOnReturn:
 *   delete:
 *     tags:
-*      - Users
-*     summary: Delete user by id
+*      - ProcessOnReturn
+*     summary: Delete processOnReturn by id
 *     description: Delete register of user.
 */
 router.delete('/', (req, res) => {
