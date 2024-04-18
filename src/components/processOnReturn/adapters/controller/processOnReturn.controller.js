@@ -1,4 +1,4 @@
-module.exports = class ProcessController {
+module.exports = class ProcessOnController {
     constructor(createProcessOnReturn, listProcessOnReturn) {
         this.createProcessOnReturn = createProcessOnReturn;
         this.listProcessOnReturn = listProcessOnReturn;
