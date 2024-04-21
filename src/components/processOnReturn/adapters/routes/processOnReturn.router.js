@@ -26,7 +26,12 @@ const processOnReturnController = new ProcessOnReturnController(createProcessOnR
  *          schema:
  *            type: object
  *            properties:
- *             
+ *              process_Id
+ *                 type: int
+ *                 example: 1
+ *               return_Id 
+ *                 type: int
+ *                 example: 1          
  *     responses:
  *          '201':
  *             description: ProcessOnReturn created
@@ -55,6 +60,12 @@ router.post('/', async (req, res) => {
 *             schema:
 *               type: object
 *               properties:
+*                 process_Id
+*                   type: int
+*                   example: 1
+*                 return_Id 
+*                   type: int
+*                   example: 1    
 *                
 */
 router.get('/', async (req, res) => {
