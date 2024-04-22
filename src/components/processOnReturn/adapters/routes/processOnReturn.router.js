@@ -60,6 +60,10 @@ router.post('/', async (req, res) => {
 *             schema:
 *               type: object
 *               properties:
+*                 id:
+*                   type: integer
+*                   format: int64
+*                   example: 1
 *                 process_Id
 *                   type: int
 *                   example: 1
