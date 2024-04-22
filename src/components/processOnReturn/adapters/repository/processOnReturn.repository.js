@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-module.exports = class processOnReturn {
+module.exports = class ProcessOnReturn {
     insert = async (processOnReturn) => {
       await prisma.processOnReturn.create({ data: processOnReturn });
     };
@@ -14,7 +14,7 @@ module.exports = class processOnReturn {
     update = async (processOnReturn) => {
       return await prisma.processOnReturn.update({
         where: { id: processOnReturn.id },
-        data: process,
+        data: processOnReturn,
       });
     };
     delete = async (id) => {

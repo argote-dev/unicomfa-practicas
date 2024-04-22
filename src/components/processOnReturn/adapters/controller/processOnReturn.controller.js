@@ -1,4 +1,4 @@
-module.exports = class ProcessController {
+module.exports = class ProcessOnReturnController {
     constructor(createProcessOnReturn, listProcessOnReturn) {
         this.createProcessOnReturn = createProcessOnReturn;
         this.listProcessOnReturn = listProcessOnReturn;
@@ -13,7 +13,7 @@ module.exports = class ProcessController {
             });
             res.status(201).send({});
         } catch {
-            res.status(500).send({ message: 'An error ocurred while creating the user.' });
+            res.status(500).send({ message: 'An error ocurred while creating the processOnReturn.' });
         }
     }
 
@@ -22,7 +22,7 @@ module.exports = class ProcessController {
             let data = await this.listProcessOnReturn.execute();
             res.status(201).send(data);
         } catch {
-            res.status(500).send({ message: 'An error ocurred while list the users.' });
+            res.status(500).send({ message: 'An error ocurred while list the processOnReturn.' });
         }
     }
 };
