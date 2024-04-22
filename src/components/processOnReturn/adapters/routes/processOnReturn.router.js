@@ -91,12 +91,12 @@ router.get('/', async (req, res) => {
  *          schema:
  *            type: object
  *            properties:
- *              name:
- *                type: string
- *                example: David
- *              last_name:
- *                 type: string
- *                 example: Argote
+ *             process_Id
+ *                 type: int
+ *                 example: 1
+ *             return_Id 
+ *                 type: int
+ *                 example: 1   
  *              
  *     responses:
  *          '200':
