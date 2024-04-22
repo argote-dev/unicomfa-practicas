@@ -77,26 +77,59 @@ router.get('/', async (req, res) => {
 });
 
 /**
-* @swagger
-* api/v1/proccessOnReturn:
-*   put:
-*     tags:
-*      - Process
-*     summary: Update processOnReturn
-*     description: Update info of processOnReturn.
-*/
+ * @swagger
+ * api/v1/proccesOnReturn:
+ *   put:
+ *     tags:
+ *      - proccesOnReturn
+ *     summary: Update proccesOnReturn
+ *     description: Update info of proccesOnReturn.
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: David
+ *              last_name:
+ *                 type: string
+ *                 example: Argote
+ *              
+ *     responses:
+ *          '200':
+ *             description: proccesOnReturn created
+ *          '500':
+ *             description: Server error
+ */
 router.put('/', (req, res) => {
   res.send('PUT');
 });
 
 /**
 * @swagger
-* api/v1/processOnReturn:
+*  /api/v1/proccesOnReturn/{id}:
 *   delete:
 *     tags:
-*      - ProcessOnReturn
-*     summary: Delete processOnReturn by id
-*     description: Delete register of user.
+*       - proccesOnReturn
+*     summary: Delete user by id
+*     description: Delete register of proccesOnReturn.
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         description: id of proccesOnReturn
+*         schema:
+*           type: string
+*     responses:
+*       '200':
+*         description: proccesOnReturn deleted
+*       '404':
+*         description: proccesOnReturn not found
+*       '500':
+*         description: Server internal error
 */
 router.delete('/', (req, res) => {
   res.send('DELETE');
