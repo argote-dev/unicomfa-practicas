@@ -16,7 +16,7 @@ const processOnReturnController = new ProcessOnReturnController(
 
 /**
  * @swagger
- * api/v1/processOnReturn:
+ * /api/v1/processOnReturn:
  *   post:
  *     tags:
  *      - ProcessOnReturn
@@ -80,7 +80,7 @@ router.get('/', async (req, res) => {
 
 /**
  * @swagger
- * api/v1/processOnReturn:
+ * /api/v1/processOnReturn:
  *   put:
  *     tags:
  *      - ProcessOnReturn

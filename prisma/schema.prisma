@@ -10,10 +10,12 @@ datasource db {
 model User {
   id                 Int              @id @default(autoincrement())
   email              String           @unique
+  num_document       String           @unique
   name               String
   last_name          String
   address            String
   birth_date         String
+  password           String
   idProgram          Int?
   program            Program?         @relation(fields: [idProgram], references: [id])
   create_at          DateTime         @default(now())
