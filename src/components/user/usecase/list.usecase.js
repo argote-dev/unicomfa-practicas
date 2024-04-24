@@ -1,4 +1,4 @@
-module.exports = class CreateUser {
+module.exports = class ListUser {
   constructor(userRepository) {
     this.userRepository = userRepository;
   }
