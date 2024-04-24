@@ -1,4 +1,4 @@
-module.exports = class CreateDevolution {
+module.exports = class ListDevolution {
     constructor(devolutionRespository) {
         this.devolutionRespository = devolutionRespository;
     }

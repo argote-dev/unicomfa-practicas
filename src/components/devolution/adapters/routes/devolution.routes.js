@@ -13,16 +13,17 @@ const createDevolutionUseCase = new CreateDevolutionUseCase(devolutionRepository
 const listDevolutionUseCase = new ListDevolutionUseCase(devolutionRepository);
 const updateDevolutionUseCase = new UpdateDevolutionUseCase(devolutionRepository);
 const deleteDevolutonUseCase = new DeleteDevolutionUsecase(devolutionRepository);
-const DevolutionController = new DevolutionController(createDevolutionUseCase, listDevolutionUseCase, updateDevolutionUseCase, deleteDevolutonUseCase);
+const devolutionController = new DevolutionController(createDevolutionUseCase, listDevolutionUseCase, updateDevolutionUseCase, deleteDevolutonUseCase);
+
 
 /**
  * @swagger
- * api/v1/Devolution:
+ * /api/v1/devolution:
  *   post:
  *     tags:
  *      - Devolution
- *     summary: Insert new Devolution
- *     description: Save Devolution into db.
+ *     summary: Insert new devolution
+ *     description: Save devolution into db.
  *     requestBody:
  *      required: true
  *      content:
@@ -30,13 +31,13 @@ const DevolutionController = new DevolutionController(createDevolutionUseCase, l
  *          schema:
  *            type: object
  *            properties:
- *              description:
+ *              descripcion:
  *                type: string
- *                example: No tiene la documentacion completa
- *      
+ *                example: Documentancion incompleta
+ *              
  *     responses:
  *          '201':
- *             description: Devolution created
+ *             description: devolution created
  *          '500':
  *             description: Server error
  */
@@ -44,17 +45,19 @@ router.post('/', async (req, res) => {
     await devolutionController.insertDevolution(req, res);
 });
 
+
+
 /**
  * @swagger
- * /api/v1/Devolution:
+ * /api/v1/devolution:
  *   get:
  *     tags:
  *       - Devolution
- *     summary: Get all users registered in the database
+ *     summary: Get all Devolution registered in the database
  *     description: List of all devolution.
  *     responses:
  *       '200':
- *         description: Devolution found
+ *         description: devolution found
  *         content:
  *           application/json:
  *             schema:
@@ -64,10 +67,11 @@ router.post('/', async (req, res) => {
  *                   type: integer
  *                   format: int64
  *                   example: 1
- *                description:
+ *                 email:
  *                   type: string
- *                   example: No tiene la documentacion completa
- *                
+ *                   format: description
+ *                   example: Documentacion incompleta
+ *        
  */
 router.get('/', async (req, res) => {
     await devolutionController.listAllDevolution(req, res);
@@ -75,12 +79,12 @@ router.get('/', async (req, res) => {
 
 /**
  * @swagger
- * api/v1/devolution:
+ * /api/v1/devolution:
  *   put:
  *     tags:
  *      - Devolution
- *     summary: Update Devolution
- *     description: Update info of return.
+ *     summary: Update devolution
+ *     description: Update info of devolution.
  *     requestBody:
  *      required: true
  *      content:
@@ -88,33 +92,34 @@ router.get('/', async (req, res) => {
  *          schema:
  *            type: object
  *            properties:
- *              description:
+ *              name:
  *                type: string
- *                example: No tiene la documentacion completa
- *             
+ *                example: Documentacion incompleta
+ *              
  *     responses:
  *          '200':
- *             description: Devolution created
+ *             description: devolution created
  *          '500':
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-    await devolutionController.updaterDevolutionInfo(req, res);
+    await devolutionController.updateDevolutionInfo(req, res);
 });
+
 
 /**
  * @swagger
- * /api/v1/Devolution/{id}:
+ * /api/v1/devolution/{id}:
  *   delete:
  *     tags:
  *       - Devolution
- *     summary: Delete user by id
- *     description: Delete register of Devolution.
+ *     summary: Delete Devolution by id
+ *     description: Delete register of devolution.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: id of devolution
+ *         description: id of user
  *         schema:
  *           type: string
  *     responses:
@@ -126,7 +131,7 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-    await DevolutionController.deleteDevolutionById(req, res);
+    await devolutionController.deleteDevolutionById(req, res);
 });
 
 module.exports = router;

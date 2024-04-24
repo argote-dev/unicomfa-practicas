@@ -1,4 +1,4 @@
-module.exports = class DeleteDevolution {
+module.exports = class UpdateDevolution {
     constructor(devolutionRespository) {
         this.devolutionRespository = devolutionRespository;
     }

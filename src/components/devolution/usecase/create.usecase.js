@@ -1,4 +1,7 @@
 const Devolution = require('../entity/devolution.entity');
+const bcrypt = require('bcrypt');
+
+const salt = 10;
 
 module.exports = class CreateDevolution {
   constructor(devolutionRepository) {
