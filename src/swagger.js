@@ -21,7 +21,8 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: [`${__dirname}/components/user/adapters/routes/user.routes.js`],
+  apis: [`${__dirname}/components/user/adapters/routes/user.routes.js`,
+  `${__dirname}/components/typeUser/adapters/routes/typeUser.routes.js`],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
