@@ -11,7 +11,7 @@ module.exports = class CreateDevolution {
   async execute(devolution) {
     const { description } = devolution;
     await this.devolutionRepository.insert(
-      new User(description),
+      new Devolution(description),
     );
   }
 };
