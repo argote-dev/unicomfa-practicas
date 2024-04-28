@@ -139,5 +139,4 @@ router.put('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   await processOnReturnController.deleteUserById(req, res);
 });
-
 module.exports = router;
