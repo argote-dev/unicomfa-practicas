@@ -4,15 +4,18 @@ const router = express.Router();
 const ProcessOnReturnRepository = require('../repository/processOnReturn.repository');
 const CreateProcessOnReturnUseCase = require('../../usecase/create.usecase');
 const ListProcessOnReturnUseCase = require('../../usecase/list.usecase');
+const UpdateProcessOnReturnUseCase = require('../../usecase/update.usecase');
+const DeleteProcessOnReturnUsecase = require('../../usecase/delete.usecase');
 const ProcessOnReturnController = require('../controller/processOnReturn.controller');
+
 
 const processOnReturnRepository = new ProcessOnReturnRepository();
 const createProcessOnReturnUseCase = new CreateProcessOnReturnUseCase(processOnReturnRepository);
 const listProcessOnReturnUseCase = new ListProcessOnReturnUseCase(processOnReturnRepository);
-const processOnReturnController = new ProcessOnReturnController(
-  createProcessOnReturnUseCase,
-  listProcessOnReturnUseCase,
-);
+const updatProcessOnReturnUseCase = new UpdateProcessOnReturnUseCase(processOnReturnRepository);
+const deleteProcessOnReturnUseCase = new DeleteProcessOnReturnUsecase(processOnReturnRepository);
+const processOnReturnController = new ProcessOnReturnController(createProcessOnReturnUseCase,
+  listProcessOnReturnUseCase, updatProcessOnReturnUseCase, deleteProcessOnReturnUseCase);
 
 /**
  * @swagger
@@ -75,7 +78,7 @@ router.post('/', async (req, res) => {
  *
  */
 router.get('/', async (req, res) => {
-  await ProcessOnReturnController.listAllProcessOnReturn(req, res);
+  await processOnReturnController.listAllProcessOnReturn(req, res);
 });
 
 /**
@@ -106,8 +109,8 @@ router.get('/', async (req, res) => {
  *          '500':
  *             description: Server error
  */
-router.put('/', (req, res) => {
-  res.send('PUT');
+router.put('/', async (req, res) => {
+  await processOnReturnController.updateUserInfo(req, res);
 });
 
 /**
@@ -133,8 +136,8 @@ router.put('/', (req, res) => {
  *       '500':
  *         description: Server internal error
  */
-router.delete('/', (req, res) => {
-  res.send('DELETE');
+router.delete('/:id', async (req, res) => {
+  await processOnReturnController.deleteUserById(req, res);
 });
 
 module.exports = router;
