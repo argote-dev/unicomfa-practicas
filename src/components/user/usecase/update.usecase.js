@@ -1,4 +1,4 @@
-module.exports = class DeleteUser {
+module.exports = class UpdateUser {
   constructor(userRespository) {
     this.userRespository = userRespository;
   }
