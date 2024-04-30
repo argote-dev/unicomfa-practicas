@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-module.exports = class UserRepository {
+module.exports = class DevolutionRepository {
     insert = async (devolution) => {
         await prisma.devolution.create({ data: devolution });
     };
