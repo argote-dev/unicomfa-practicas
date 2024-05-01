@@ -17,7 +17,7 @@ const userController = new UserController(createUserUseCase, listUsersUseCase, u
 
 /**
  * @swagger
- * api/v1/users:
+ * /api/v1/users:
  *   post:
  *     tags:
  *      - Users
@@ -30,6 +30,9 @@ const userController = new UserController(createUserUseCase, listUsersUseCase, u
  *          schema:
  *            type: object
  *            properties:
+ *              num_document:
+ *                type: string
+ *                example: 1002456542
  *              name:
  *                type: string
  *                example: David
@@ -135,7 +138,7 @@ router.get('/', async (req, res) => {
 
 /**
  * @swagger
- * api/v1/users:
+ * /api/v1/users:
  *   put:
  *     tags:
  *      - Users
