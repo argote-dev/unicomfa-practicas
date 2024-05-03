@@ -26,6 +26,7 @@ const options = {
     `${__dirname}/components/user/adapters/routes/user.routes.js`,
     `${__dirname}/components/processOnReturn/adapters/routes/processOnReturn.routes.js`,
     `${__dirname}/components/devolution/adapters/routes/devolution.routes.js`,
+    `${__dirname}/components/company/adapters/routes/company.routes.js`,
 
   ],
 };
