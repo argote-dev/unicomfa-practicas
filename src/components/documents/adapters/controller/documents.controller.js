@@ -7,7 +7,7 @@ module.exports = class DocumentsController {
     }
 
     async insertDocuments(req, res) {
-        const { url, } = req.body;
+        const { url, date, typeId, userId } = req.body;
         try {
             await this.createDocuments.execute({
                 url,
