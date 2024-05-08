@@ -10,6 +10,7 @@ app.use('/api/v1/users', require('./components/user/adapters/routes/user.routes'
 app.use('/api/v1/processOnReturn', require('./components/processOnReturn/adapters/routes/processOnReturn.routes'));
 app.use('/api/v1/login', require('./components/auth/adapters/routes/auth.routes'));
 app.use('/api/v1/devolution', require('./components/devolution/adapters/routes/devolution.routes'));
+app.use('/api/v1/typeDocuments', require('./components/typeDocuments/adapters/routes/typeDocuments.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
