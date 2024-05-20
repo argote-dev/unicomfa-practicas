@@ -110,7 +110,7 @@ router.get('/', async (req, res) => {
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-  await processOnReturnController.updateUserInfo(req, res);
+  await processOnReturnController.updateProcesOnReturnInfo(req, res);
 });
 
 /**
@@ -137,6 +137,6 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-  await processOnReturnController.deleteUserById(req, res);
+  await processOnReturnController.deleteProcessOnReturnById(req, res);
 });
 module.exports = router;
