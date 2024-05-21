@@ -11,6 +11,7 @@ app.use('/api/v1/typeUser', require('./components/typeUser/adapters/routes/typeU
 app.use('/api/v1/processOnReturn', require('./components/processOnReturn/adapters/routes/processOnReturn.routes'));
 app.use('/api/v1/login', require('./components/auth/adapters/routes/auth.routes'));
 app.use('/api/v1/devolution', require('./components/devolution/adapters/routes/devolution.routes'));
+app.use('/api/v1/documents', require('./components/documents/adapters/routes/documents.routes'));
 app.use('/api/v1/company', require('./components/company/adapters/routes/company.routes'));
 
 app.on('error', (error) => {
