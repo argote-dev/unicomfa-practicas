@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const TypeUserRepository = require('../repository/typeUser.repository');
-const CreateTypeUserCase = require('../../usecase/create.usecase');
+const CreateTypeUserUseCase = require('../../usecase/create.usecase');
 const ListTypeUserUseCase = require('../../usecase/list.usecase');
 const UpdateTypeUserUseCase = require('../../usecase/update.usecase');
 const DeleteTypeUserUsecase = require('../../usecase/delete.usecase');
 const TypeUserController = require('../controller/typeUser.controller');
 
 const typeUserRepository = new TypeUserRepository();
-const createTypeUserUseCase = CreateTypeUserUseCase(typeUserRepository);
+const createTypeUserUseCase = new CreateTypeUserUseCase(typeUserRepository);
 const listTypeUserUseCase = new ListTypeUserUseCase(typeUserRepository);
 const updatTypeUserUseCase = new UpdateTypeUserUseCase(typeUserRepository);
 const deleteTypeUserUseCase = new DeleteTypeUserUsecase(typeUserRepository);
