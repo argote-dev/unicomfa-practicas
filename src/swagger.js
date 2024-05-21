@@ -21,13 +21,16 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: [
+  apis: [`${__dirname}/components/user/adapters/routes/user.routes.js`,
+  `${__dirname}/components/typeUser/adapters/routes/typeUser.routes.js`,
     `${__dirname}/components/auth/adapters/routes/auth.routes.js`,
     `${__dirname}/components/user/adapters/routes/user.routes.js`,
     `${__dirname}/components/processOnReturn/adapters/routes/processOnReturn.routes.js`,
     `${__dirname}/components/devolution/adapters/routes/devolution.routes.js`,
     `${__dirname}/components/userOnProcess/adapters/routes/userOnProcess.routes.js`,
-
+    `${__dirname}/components/typeDocuments/adapters/routes/typeDocuments.routes.js`,
+    `${__dirname}/components/documents/adapters/routes/documents.routes.js`,
+    `${__dirname}/components/company/adapters/routes/company.routes.js`,
   ],
 };
 

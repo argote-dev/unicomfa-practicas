@@ -7,11 +7,14 @@ const port = app.get('port');
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use('/api/v1/users', require('./components/user/adapters/routes/user.routes'));
+app.use('/api/v1/typeUser', require('./components/typeUser/adapters/routes/typeUser.routes'));
 app.use('/api/v1/processOnReturn', require('./components/processOnReturn/adapters/routes/processOnReturn.routes'));
 app.use('/api/v1/login', require('./components/auth/adapters/routes/auth.routes'));
 app.use('/api/v1/devolution', require('./components/devolution/adapters/routes/devolution.routes'));
 app.use('/api/v1/userOnProcess', require('./components/userOnProcess/adapters/routes/userOnProcess.routes'));
-
+app.use('/api/v1/typeDocuments', require('./components/typeDocuments/adapters/routes/typeDocuments.routes'));
+app.use('/api/v1/documents', require('./components/documents/adapters/routes/documents.routes'));
+app.use('/api/v1/company', require('./components/company/adapters/routes/company.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
