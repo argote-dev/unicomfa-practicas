@@ -31,6 +31,7 @@ const options = {
     `${__dirname}/components/typeDocuments/adapters/routes/typeDocuments.routes.js`,
     `${__dirname}/components/documents/adapters/routes/documents.routes.js`,
     `${__dirname}/components/company/adapters/routes/company.routes.js`,
+    `${__dirname}/components/statusProcess/adapters/routes/statusProcess.routes.js`,
   ],
 };
 
