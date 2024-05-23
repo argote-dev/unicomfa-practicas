@@ -15,6 +15,8 @@ app.use('/api/v1/userOnProcess', require('./components/userOnProcess/adapters/ro
 app.use('/api/v1/typeDocuments', require('./components/typeDocuments/adapters/routes/typeDocuments.routes'));
 app.use('/api/v1/documents', require('./components/documents/adapters/routes/documents.routes'));
 app.use('/api/v1/company', require('./components/company/adapters/routes/company.routes'));
+app.use('/api/v1/program', require('./components/program/adapters/routes/program.routes'));
+
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
