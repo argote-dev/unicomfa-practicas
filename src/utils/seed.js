@@ -57,7 +57,22 @@ async function main() {
     },
   });
 
-  console.info({ cc, ti, nit, student, admin, theacher, businessman, popayan, cauca });
+  const userDefault = await prisma.user.create({
+    data: {
+      email: 'user@example.com',
+      num_document: '1010123421',
+      name: 'John',
+      last_name: 'Doe',
+      address: '123 Main St',
+      birth_date: '1990-01-01',
+      password: '123456',
+      idTypeDocument: 1,
+      idTypeMunicipality: 1,
+      idTypeUser: 1,
+    },
+  });
+
+  console.info({ cc, ti, nit, student, admin, theacher, businessman, popayan, cauca, userDefault });
 }
 
 main()

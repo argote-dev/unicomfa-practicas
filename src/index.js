@@ -16,7 +16,7 @@ app.use('/api/v1/typeDocuments', require('./components/typeDocuments/adapters/ro
 app.use('/api/v1/documents', require('./components/documents/adapters/routes/documents.routes'));
 app.use('/api/v1/company', require('./components/company/adapters/routes/company.routes'));
 app.use('/api/v1/typeProcess', require('./components/typeProcess/adapters/routes/typeProcess.routes'));
-
+app.use('/api/v1/upload-pdf', require('./components/uploadFiles/adapters/routes/uploadFiles.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
