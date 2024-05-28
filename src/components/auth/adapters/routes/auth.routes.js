@@ -27,18 +27,18 @@ const authController = new AuthController(loginUseCase);
  *              email:
  *                 type: string
  *                 format: email
- *                 example: argote@unicomfacauca.edu.co
+ *                 example: user@example.com
  *              password:
  *                 type: string
- *                 example: 1234567890
+ *                 example: 123456
  *     responses:
  *          '200':
  *             description: User auth if is true
  *          '500':
  *             description: Server error
  */
-router.post('/', async (req, res) => {
-  await authController.loginUseCase(req, res);
+router.post('/', (req, res) => {
+  authController.login(req, res);
 });
 
 module.exports = router;

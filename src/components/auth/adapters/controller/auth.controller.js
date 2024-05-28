@@ -1,15 +1,18 @@
 module.exports = class AuthController {
   constructor(loginUseCase) {
     this.loginUseCase = loginUseCase;
+    this.login = this.login.bind(this);
   }
 
-  async login(req, res) {
-    try {
-      const { email, password } = req.body;
-      const result = await this.loginUseCase.execute({ email, password });
-      res.status(200).send({ result: result });
-    } catch {
-      res.status(500).send({ message: 'An error ocurred while auth the user.' });
-    }
+  login(req, res) {
+    const { email, password } = req.body;
+    this.loginUseCase
+      .execute({ email, password })
+      .then((token) => {
+        res.status(200).send({ token });
+      })
+      .catch((error) => {
+        res.status(401).send({ message: error });
+      });
   }
 };
