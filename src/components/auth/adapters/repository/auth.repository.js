@@ -1,20 +1,53 @@
 const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const prisma = new PrismaClient();
+const secret = process.env.SECRET_JWT;
+
+function decryptPassword(entry, password) {
+  return entry === password;
+}
+
+async function getUserByEmail(param) {
+  return await prisma.user.findUnique({
+    where: {
+      email: param,
+    },
+  });
+}
+
+async function updateToken(emain, token) {
+  await prisma.user.update({
+    where: {
+      email: emain,
+    },
+    data: {
+      token: token,
+    },
+  });
+}
 
 module.exports = class AuthRepository {
-  async login({ email, password }) {
-    const user = await prisma.user.findFirst({ where: email });
-    return await decryptPassword(password, user.password);
+  constructor() {
+    this.login = this.login.bind(this);
   }
 
-  decryptPassword(entry, password) {
-    return Promise((resolve, reject) => {
-      bcrypt.compare(entry, password).then((error, result) => {
-        if (error) reject(error);
-        resolve(result);
-      });
+  login({ email, password }) {
+    return new Promise(async (resolve, reject) => {
+      const user = await getUserByEmail(email);
+
+      if (user === null) {
+        reject(Error('User not found.'));
+        return;
+      }
+
+      if (decryptPassword(password, user.password)) {
+        const token = jwt.sign({ email: user.email, role: user.idTypeUser }, secret, { expiresIn: '8h' });
+        await updateToken(email, token);
+        resolve(token);
+      } else {
+        reject(Error('User or password not found.'));
+      }
     });
   }
 };
