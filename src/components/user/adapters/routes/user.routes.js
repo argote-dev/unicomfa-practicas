@@ -7,6 +7,7 @@ const ListUsersUseCase = require('../../usecase/list.usecase');
 const UpdateUserUseCase = require('../../usecase/update.usecase');
 const DeleteUserUsecase = require('../../usecase/delete.usecase');
 const UserController = require('../controller/user.controller');
+const verifyToken = require('../../../../config/middleware/auth.middleware');
 
 const userRepository = new UserRepository();
 const createUserUseCase = new CreateUserUseCase(userRepository);
@@ -76,6 +77,13 @@ router.post('/', async (req, res) => {
  *       - Users
  *     summary: Get all users registered in the database
  *     description: List of all users.
+ *     parameters:
+ *        - in: header
+ *          name: x-api-key
+ *          schema:
+ *            type: string
+ *            format: token
+ *          required: true
  *     responses:
  *       '200':
  *         description: Users found
@@ -132,7 +140,7 @@ router.post('/', async (req, res) => {
  *                   format: int64
  *                   example: 1
  */
-router.get('/', async (req, res) => {
+router.get('/', verifyToken, async (req, res) => {
   await userController.listAllUsers(req, res);
 });
 
@@ -144,6 +152,13 @@ router.get('/', async (req, res) => {
  *      - Users
  *     summary: Update user
  *     description: Update info of user.
+ *     parameters:
+ *        - in: header
+ *          name: x-api-key
+ *          schema:
+ *            type: string
+ *            format: token
+ *          required: true
  *     requestBody:
  *      required: true
  *      content:
@@ -182,7 +197,7 @@ router.get('/', async (req, res) => {
  *          '500':
  *             description: Server error
  */
-router.put('/', async (req, res) => {
+router.put('/', verifyToken, async (req, res) => {
   await userController.updateUserInfo(req, res);
 });
 
@@ -195,6 +210,12 @@ router.put('/', async (req, res) => {
  *     summary: Delete user by id
  *     description: Delete register of user.
  *     parameters:
+ *       - in: header
+ *         name: x-api-key
+ *         schema:
+ *            type: string
+ *            format: token
+ *         required: true
  *       - in: path
  *         name: id
  *         required: true
@@ -209,7 +230,7 @@ router.put('/', async (req, res) => {
  *       '500':
  *         description: Server internal error
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verifyToken, async (req, res) => {
   await userController.deleteUserById(req, res);
 });
 
