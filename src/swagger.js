@@ -36,6 +36,7 @@ const options = {
     `${__dirname}/components/statusProcess/adapters/routes/statusProcess.routes.js`,
     `${__dirname}/components/typeProcess/adapters/routes/typeProcess.routes.js`,
     `${__dirname}/components/uploadFiles/adapters/routes/uploadFiles.routes.js`,
+    `${__dirname}/components/faculty/adapters/routes/faculty.routes.js`,
   ],
 };
 
