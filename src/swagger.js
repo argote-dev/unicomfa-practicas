@@ -21,8 +21,9 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: [`${__dirname}/components/user/adapters/routes/user.routes.js`,
-  `${__dirname}/components/typeUser/adapters/routes/typeUser.routes.js`,
+  apis: [
+    `${__dirname}/components/user/adapters/routes/user.routes.js`,
+    `${__dirname}/components/typeUser/adapters/routes/typeUser.routes.js`,
     `${__dirname}/components/auth/adapters/routes/auth.routes.js`,
     `${__dirname}/components/user/adapters/routes/user.routes.js`,
     `${__dirname}/components/processOnReturn/adapters/routes/processOnReturn.routes.js`,
@@ -31,8 +32,12 @@ const options = {
     `${__dirname}/components/typeDocuments/adapters/routes/typeDocuments.routes.js`,
     `${__dirname}/components/documents/adapters/routes/documents.routes.js`,
     `${__dirname}/components/company/adapters/routes/company.routes.js`,
+    `${__dirname}/components/program/adapters/routes/program.routes.js`,
+    `${__dirname}/components/statusProcess/adapters/routes/statusProcess.routes.js`,
+    `${__dirname}/components/typeProcess/adapters/routes/typeProcess.routes.js`,
+    `${__dirname}/components/uploadFiles/adapters/routes/uploadFiles.routes.js`,
     `${__dirname}/components/faculty/adapters/routes/faculty.routes.js`,
-    
+
   ],
 };
 
