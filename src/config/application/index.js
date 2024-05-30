@@ -7,7 +7,13 @@ const app = express();
 dotenv.config();
 app.set('port', process.env.PORT || 3000);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
+  }),
+);
 app.use(express.json());
 
 module.exports = app;
