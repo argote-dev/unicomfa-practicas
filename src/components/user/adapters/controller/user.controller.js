@@ -7,9 +7,11 @@ module.exports = class UserController {
   }
 
   async insertUser(req, res) {
-    const { name, last_name, address, birth_date, email, type_document, type_municipality, type_user } = req.body;
+    const { num_document, name, last_name, address, birth_date, email, type_document, type_municipality, type_user } =
+      req.body;
     try {
       await this.createUser.execute({
+        num_document,
         name,
         last_name,
         address,
@@ -20,8 +22,8 @@ module.exports = class UserController {
         type_user,
       });
       res.status(201).send({});
-    } catch {
-      res.status(500).send({ message: 'An error ocurred while creating the user.' });
+    } catch (error) {
+      res.status(500).send({ message: 'An error ocurred while creating the user.', error: error });
     }
   }
 
