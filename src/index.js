@@ -20,11 +20,13 @@ app.use('/api/v1/statusProcess', require('./components/statusProcess/adapters/ro
 app.use('/api/v1/typeProcess', require('./components/typeProcess/adapters/routes/typeProcess.routes'));
 app.use('/api/v1/upload-pdf', require('./components/uploadFiles/adapters/routes/uploadFiles.routes'));
 app.use('/api/v1/faculty', require('./components/faculty/adapters/routes/faculty.routes'));
+app.use('/api/v1/typeDepartment', require('./components/typeDepartment/adapters/routes/typeDepartment.routes'));
+app.use('/api/v1/typeMunicipality', require('./components/typeMunicipality/adapters/routes/typeMunicipality.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
 });
 
 app.listen(port, () => {
-  console.log(`✅ Server is running at http://localhost:${port}`);
+  console.log(`✅ Server is running at port ${port}`);
 });

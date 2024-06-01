@@ -37,7 +37,8 @@ const options = {
     `${__dirname}/components/typeProcess/adapters/routes/typeProcess.routes.js`,
     `${__dirname}/components/uploadFiles/adapters/routes/uploadFiles.routes.js`,
     `${__dirname}/components/faculty/adapters/routes/faculty.routes.js`,
-
+    `${__dirname}/components/typeDepartment/adapters/routes/typeDepartment.routes.js`,
+    `${__dirname}/components/typeMunicipality/adapters/routes/typeMunicipality.routes.js`,
   ],
 };
 

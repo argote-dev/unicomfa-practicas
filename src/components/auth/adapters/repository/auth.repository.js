@@ -1,11 +1,12 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
 const secret = process.env.SECRET_JWT;
 
-function decryptPassword(entry, password) {
-  return entry === password;
+async function decryptPassword(entry, password) {
+  return await bcrypt.compare(entry, password);
 }
 
 async function getUserByEmail(param) {
@@ -41,7 +42,7 @@ module.exports = class AuthRepository {
         return;
       }
 
-      if (decryptPassword(password, user.password)) {
+      if (await decryptPassword(password, user.password)) {
         const token = jwt.sign({ email: user.email, role: user.idTypeUser }, secret, { expiresIn: '8h' });
         await updateToken(email, token);
         resolve(token);
