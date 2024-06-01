@@ -103,5 +103,3 @@ Este proyecto está licenciado bajo la Licencia MIT.
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme en [wilderargote@unicomfacauca.edu.co].
-
-```
