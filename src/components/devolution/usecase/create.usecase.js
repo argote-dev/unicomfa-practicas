@@ -7,8 +7,6 @@ module.exports = class CreateDevolution {
 
   async execute(devolution) {
     const { description } = devolution;
-    await this.devolutionRepository.insert(
-      new Devolution(description),
-    );
+    await this.devolutionRepository.insert(new Devolution(description));
   }
 };
