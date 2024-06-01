@@ -1,9 +1,8 @@
 # Unicomfacauca - Proyecto prácticas
 
-```markdown
 # Proyecto de Node.js con Express y Prisma
 
-Este proyecto es una aplicación básica construida con Node.js, Express y Prisma como ORM. El propósito de esta aplicación es servir como plantilla para proyectos futuros que requieran una estructura similar.
+Este proyecto es una aplicación básica construida con Node.js, Express y Prisma como ORM.
 
 ## Requisitos
 
@@ -15,8 +14,8 @@ Este proyecto es una aplicación básica construida con Node.js, Express y Prism
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
-   cd tu-repositorio
+   git clone https://github.com/argote-dev/unicomfa-practicas.git
+   cd practicas-api
    ```
 
 2. Instala las dependencias del proyecto:
@@ -26,7 +25,7 @@ Este proyecto es una aplicación básica construida con Node.js, Express y Prism
 
 3. Configura las variables de entorno. Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
    ```env
-   DATABASE_URL="mysql://user:password@localhost:3306/mydatabase"
+   DATABASE_URL=file:./dev.db
    ```
 
 4. Inicializa Prisma:
@@ -106,5 +105,3 @@ Este proyecto está licenciado bajo la Licencia MIT.
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme en [wilderargote@unicomfacauca.edu.co].
 
 ```
-
-Este README proporciona una guía completa sobre cómo instalar, configurar y utilizar tu proyecto. También incluye secciones para Prisma y contribuciones, lo que facilita a otros desarrolladores colaborar en el proyecto.
