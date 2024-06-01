@@ -13,7 +13,12 @@ const createTypeUserUseCase = new CreateTypeUserUseCase(typeUserRepository);
 const listTypeUserUseCase = new ListTypeUserUseCase(typeUserRepository);
 const updatTypeUserUseCase = new UpdateTypeUserUseCase(typeUserRepository);
 const deleteTypeUserUseCase = new DeleteTypeUserUsecase(typeUserRepository);
-const typeUserController = new TypeUserController(createTypeUserUseCase, listTypeUserUseCase, updatTypeUserUseCase, deleteTypeUserUseCase);
+const typeUserController = new TypeUserController(
+  createTypeUserUseCase,
+  listTypeUserUseCase,
+  updatTypeUserUseCase,
+  deleteTypeUserUseCase,
+);
 
 /**
  * @swagger
@@ -33,7 +38,7 @@ const typeUserController = new TypeUserController(createTypeUserUseCase, listTyp
  *              name:
  *                type: string
  *                example: Estudiante
- *              
+ *
  *     responses:
  *          '201':
  *             description: TypeUser created
@@ -64,11 +69,11 @@ router.post('/', async (req, res) => {
  *                   type: integer
  *                   format: int64
  *                   example: 1
- *                 
+ *
  *                 name:
  *                   type: string
  *                   example: Estudiante
- *                 
+ *
  */
 router.get('/', async (req, res) => {
   await typeUserController.listAllTypeUser(req, res);
@@ -92,7 +97,7 @@ router.get('/', async (req, res) => {
  *              name:
  *                type: string
  *                example: Estudiante
- *              
+ *
  *     responses:
  *          '200':
  *             description: TypeUser created

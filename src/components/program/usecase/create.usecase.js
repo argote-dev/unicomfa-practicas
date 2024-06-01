@@ -6,13 +6,7 @@ module.exports = class CreateProgram {
   }
 
   async execute(program) {
-    const { name, idFaculty } =
-      program;
-    await this.userRepository.insert(
-      new Program(
-        name,
-        idFaculty,
-      ),
-    );
+    const { name, idFaculty } = program;
+    await this.userRepository.insert(new Program(name, idFaculty));
   }
 };

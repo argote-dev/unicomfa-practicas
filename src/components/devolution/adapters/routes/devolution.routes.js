@@ -13,8 +13,12 @@ const createDevolutionUseCase = new CreateDevolutionUseCase(devolutionRepository
 const listDevolutionUseCase = new ListDevolutionUseCase(devolutionRepository);
 const updateDevolutionUseCase = new UpdateDevolutionUseCase(devolutionRepository);
 const deleteDevolutonUseCase = new DeleteDevolutionUsecase(devolutionRepository);
-const devolutionController = new DevolutionController(createDevolutionUseCase, listDevolutionUseCase, updateDevolutionUseCase, deleteDevolutonUseCase);
-
+const devolutionController = new DevolutionController(
+  createDevolutionUseCase,
+  listDevolutionUseCase,
+  updateDevolutionUseCase,
+  deleteDevolutonUseCase,
+);
 
 /**
  * @swagger
@@ -31,10 +35,10 @@ const devolutionController = new DevolutionController(createDevolutionUseCase, l
  *          schema:
  *            type: object
  *            properties:
- *              descripcion:
+ *              description:
  *                type: string
  *                example: Documentancion incompleta
- *              
+ *
  *     responses:
  *          '201':
  *             description: devolution created
@@ -42,10 +46,8 @@ const devolutionController = new DevolutionController(createDevolutionUseCase, l
  *             description: Server error
  */
 router.post('/', async (req, res) => {
-    await devolutionController.insertDevolution(req, res);
+  await devolutionController.insertDevolution(req, res);
 });
-
-
 
 /**
  * @swagger
@@ -67,14 +69,14 @@ router.post('/', async (req, res) => {
  *                   type: integer
  *                   format: int64
  *                   example: 1
- *                 email:
+ *                 description:
  *                   type: string
  *                   format: description
  *                   example: Documentacion incompleta
- *        
+ *
  */
 router.get('/', async (req, res) => {
-    await devolutionController.listAllDevolution(req, res);
+  await devolutionController.listAllDevolution(req, res);
 });
 
 /**
@@ -92,10 +94,13 @@ router.get('/', async (req, res) => {
  *          schema:
  *            type: object
  *            properties:
- *              name:
+ *              id:
+ *                type: int
+ *                example: 1
+ *              description:
  *                type: string
  *                example: Documentacion incompleta
- *              
+ *
  *     responses:
  *          '200':
  *             description: devolution created
@@ -103,9 +108,8 @@ router.get('/', async (req, res) => {
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-    await devolutionController.updateDevolutionInfo(req, res);
+  await devolutionController.updateDevolutionInfo(req, res);
 });
-
 
 /**
  * @swagger
@@ -119,7 +123,7 @@ router.put('/', async (req, res) => {
  *       - in: path
  *         name: id
  *         required: true
- *         description: id of user
+ *         description: id of devolution
  *         schema:
  *           type: string
  *     responses:
@@ -131,7 +135,7 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-    await devolutionController.deleteDevolutionById(req, res);
+  await devolutionController.deleteDevolutionById(req, res);
 });
 
 module.exports = router;

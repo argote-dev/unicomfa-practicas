@@ -13,7 +13,12 @@ const createTypeDocumentsUseCase = new CreateTypeDocumentsUseCase(typeDoumentsRe
 const listTypeDocumentsUseCase = new ListTypeDocumentssUseCase(typeDoumentsRepository);
 const updatTypeDocumentsUseCase = new UpdateTypeDocumentsUseCase(typeDoumentsRepository);
 const deleteTypeDocumentsUseCase = new DeletetypeDocumentsUsecase(typeDoumentsRepository);
-const typeDocumentsController = new TypeDocumentsController(createTypeDocumentsUseCase, listTypeDocumentsUseCase, updatTypeDocumentsUseCase, deleteTypeDocumentsUseCase);
+const typeDocumentsController = new TypeDocumentsController(
+  createTypeDocumentsUseCase,
+  listTypeDocumentsUseCase,
+  updatTypeDocumentsUseCase,
+  deleteTypeDocumentsUseCase,
+);
 
 /**
  * @swagger
@@ -40,7 +45,7 @@ const typeDocumentsController = new TypeDocumentsController(createTypeDocumentsU
  *             description: Server error
  */
 router.post('/', async (req, res) => {
-    await typeDocumentsController.insertTypeDocuments(req, res);
+  await typeDocumentsController.insertTypeDocuments(req, res);
 });
 
 /**
@@ -68,7 +73,7 @@ router.post('/', async (req, res) => {
  *                   example: Cedula
  */
 router.get('/', async (req, res) => {
-    await typeDocumentsController.listAllTypeDocuments(req, res);
+  await typeDocumentsController.listAllTypeDocuments(req, res);
 });
 
 /**
@@ -96,7 +101,7 @@ router.get('/', async (req, res) => {
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-    await typeDocumentsController.updateTypeDocumentdInfo(req, res);
+  await typeDocumentsController.updateTypeDocumentdInfo(req, res);
 });
 
 /**
@@ -123,7 +128,7 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-    await typeDocumentsController.deleteTypeDocumentsById(req, res);
+  await typeDocumentsController.deleteTypeDocumentsById(req, res);
 });
 
 module.exports = router;

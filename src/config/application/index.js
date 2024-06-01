@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 dotenv.config();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3007);
 
 const allowedOrigins = [
   'http://localhost:3000',
