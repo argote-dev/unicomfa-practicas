@@ -7,3 +7,4 @@ module.exports = class UpdateFaculty {
         await this.facultyRespository.update(faculty);
     }
 };
+

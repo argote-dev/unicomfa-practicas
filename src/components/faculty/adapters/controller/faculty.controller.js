@@ -11,7 +11,6 @@ module.exports = class FacultyController {
         try {
             await this.createFaculty.execute({
                 name,
-
             });
             res.status(201).send({});
         } catch {
@@ -43,7 +42,6 @@ module.exports = class FacultyController {
         try {
             await this.updateFaculty.execute({
                 name,
-
             });
             res.status(200).send(data);
         } catch {

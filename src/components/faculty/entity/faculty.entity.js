@@ -3,6 +3,5 @@ module.exports = class Faculty {
         name
     ) {
         this.name = name;
-
     }
 };
