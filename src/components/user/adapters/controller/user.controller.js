@@ -23,7 +23,10 @@ module.exports = class UserController {
       });
       res.status(201).send({});
     } catch (error) {
-      res.status(500).send({ message: 'An error ocurred while creating the user.', error: error });
+      res.status(500).send({
+        message: 'An error ocurred while creating the user.',
+        error: error.message,
+      });
     }
   }
 
@@ -40,7 +43,7 @@ module.exports = class UserController {
     try {
       const id = req.params.id;
       await this.deleteUser.execute(Number(id));
-      res.status(200).send(data);
+      res.status(200).send({});
     } catch {
       res.status(500).send({ message: 'An error ocurred while delete the user.' });
     }
@@ -59,7 +62,7 @@ module.exports = class UserController {
         type_municipality,
         type_user,
       });
-      res.status(200).send(data);
+      res.status(200).send({});
     } catch {
       res.status(500).send({ message: 'An error ocurred while update the user.' });
     }

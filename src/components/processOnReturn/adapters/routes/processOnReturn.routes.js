@@ -8,14 +8,17 @@ const UpdateProcessOnReturnUseCase = require('../../usecase/update.usecase');
 const DeleteProcessOnReturnUsecase = require('../../usecase/delete.usecase');
 const ProcessOnReturnController = require('../controller/processOnReturn.controller');
 
-
 const processOnReturnRepository = new ProcessOnReturnRepository();
 const createProcessOnReturnUseCase = new CreateProcessOnReturnUseCase(processOnReturnRepository);
 const listProcessOnReturnUseCase = new ListProcessOnReturnUseCase(processOnReturnRepository);
 const updatProcessOnReturnUseCase = new UpdateProcessOnReturnUseCase(processOnReturnRepository);
 const deleteProcessOnReturnUseCase = new DeleteProcessOnReturnUsecase(processOnReturnRepository);
-const processOnReturnController = new ProcessOnReturnController(createProcessOnReturnUseCase,
-  listProcessOnReturnUseCase, updatProcessOnReturnUseCase, deleteProcessOnReturnUseCase);
+const processOnReturnController = new ProcessOnReturnController(
+  createProcessOnReturnUseCase,
+  listProcessOnReturnUseCase,
+  updatProcessOnReturnUseCase,
+  deleteProcessOnReturnUseCase,
+);
 
 /**
  * @swagger

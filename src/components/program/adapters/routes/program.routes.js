@@ -13,8 +13,12 @@ const createProgramUseCase = new CreateProgtamUseCase(userRepository);
 const listProgramUseCase = new ListProgramUseCase(userRepository);
 const updatProgramUseCase = new UpdateProgramUseCase(userRepository);
 const deleteProgramUseCase = new DeleteProgramUsecase(userRepository);
-const programController = new ProgramController(createProgramUseCase, listProgramUseCase, 
-    updatProgramUseCase, deleteProgramUseCase);
+const programController = new ProgramController(
+  createProgramUseCase,
+  listProgramUseCase,
+  updatProgramUseCase,
+  deleteProgramUseCase,
+);
 
 /**
  * @swagger
@@ -92,7 +96,7 @@ router.get('/', async (req, res) => {
  *        application/json:
  *          schema:
  *            type: object
- *            properties: 
+ *            properties:
  *              name:
  *                type: string
  *                example: Ingenieria de sistemas

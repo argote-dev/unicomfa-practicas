@@ -39,7 +39,7 @@ module.exports = class CompanyController {
     try {
       const id = req.params.id;
       await this.deleteCompany.execute(Number(id));
-      res.status(200).send(data);
+      res.status(200).send({});
     } catch {
       res.status(500).send({ message: 'An error ocurred while delete the Company.' });
     }
@@ -56,7 +56,7 @@ module.exports = class CompanyController {
         phone,
         email,
       });
-      res.status(200).send(data);
+      res.status(200).send({});
     } catch {
       res.status(500).send({ message: 'An error ocurred while update the Company.' });
     }

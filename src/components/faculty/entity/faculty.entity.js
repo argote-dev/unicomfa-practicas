@@ -1,7 +1,5 @@
 module.exports = class Faculty {
-    constructor(
-        name
-    ) {
-        this.name = name;
-    }
+  constructor(name) {
+    this.name = name;
+  }
 };

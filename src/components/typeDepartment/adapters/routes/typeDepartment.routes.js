@@ -13,8 +13,12 @@ const createTypeDepartmentUseCase = new CreateTypeDepartmentUseCase(typeDepartme
 const listTypeDepartmentUseCase = new ListTypeDepartmentUseCase(typeDepartmentRepository);
 const updateTypeDepartmentUseCase = new UpdateTypeDepartmentUseCase(typeDepartmentRepository);
 const deleteTypeDepartmentUseCase = new DeleteTypeDepartmentUsecase(typeDepartmentRepository);
-const typeDepartmentController = new TypeDepartmentController(createTypeDepartmentUseCase, listTypeDepartmentUseCase, 
-    updateTypeDepartmentUseCase, deleteTypeDepartmentUseCase);
+const typeDepartmentController = new TypeDepartmentController(
+  createTypeDepartmentUseCase,
+  listTypeDepartmentUseCase,
+  updateTypeDepartmentUseCase,
+  deleteTypeDepartmentUseCase,
+);
 
 /**
  * @swagger
@@ -86,7 +90,7 @@ router.get('/', async (req, res) => {
  *        application/json:
  *          schema:
  *            type: object
- *            properties: 
+ *            properties:
  *              name:
  *                type: string
  *                example: Popayán

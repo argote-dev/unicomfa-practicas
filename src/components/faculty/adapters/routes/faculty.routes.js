@@ -13,8 +13,12 @@ const createFacultyUseCase = new CreateFacultyUseCase(facultyRepository);
 const listFacultyUseCase = new ListFacultyUseCase(facultyRepository);
 const updatFacultyUseCase = new UpdateFacultyUseCase(facultyRepository);
 const deleteFacultyUseCase = new DeleteFacultyUsecase(facultyRepository);
-const facultyController = new FacultyController(createFacultyUseCase, listFacultyUseCase,
-    updatFacultyUseCase, deleteFacultyUseCase);
+const facultyController = new FacultyController(
+  createFacultyUseCase,
+  listFacultyUseCase,
+  updatFacultyUseCase,
+  deleteFacultyUseCase,
+);
 
 /**
  * @swagger
@@ -41,7 +45,7 @@ const facultyController = new FacultyController(createFacultyUseCase, listFacult
  *             description: Server error
  */
 router.post('/', async (req, res) => {
-    await facultyController.insertFaculty(req, res);
+  await facultyController.insertFaculty(req, res);
 });
 
 /**
@@ -69,7 +73,7 @@ router.post('/', async (req, res) => {
  *                   example: Facultad de Ingenierias
  */
 router.get('/', async (req, res) => {
-    await facultyController.listAllFaculty(req, res);
+  await facultyController.listAllFaculty(req, res);
 });
 
 /**
@@ -97,7 +101,7 @@ router.get('/', async (req, res) => {
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-    await facultyController.updateFacultyInfo(req, res);
+  await facultyController.updateFacultyInfo(req, res);
 });
 
 /**
@@ -124,8 +128,7 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-    await facultyController.deleteFacultyById(req, res);
+  await facultyController.deleteFacultyById(req, res);
 });
 
 module.exports = router;
-

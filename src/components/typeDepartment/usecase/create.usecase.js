@@ -6,12 +6,7 @@ module.exports = class CreateTypeDepartment {
   }
 
   async execute(typeDepartment) {
-    const { name } =
-    typeDepartment;
-    await this.typeDepartmentRepository.insert(
-      new TypeDepartment(
-        name
-      ),
-    );
+    const { name } = typeDepartment;
+    await this.typeDepartmentRepository.insert(new TypeDepartment(name));
   }
 };

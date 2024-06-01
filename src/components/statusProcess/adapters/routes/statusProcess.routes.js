@@ -13,7 +13,12 @@ const createStatusProcessUseCase = new CreateStatusProcessUseCase(statusProcessR
 const listStatusProcessUseCase = new ListStatusProcessUseCase(statusProcessRepository);
 const updatStatusProcessUseCase = new UpdateStatusProcessUseCase(statusProcessRepository);
 const deleteStatusProcessUseCase = new DeleteStatusProcessUsecase(statusProcessRepository);
-const statusProcessController = new StatusProcessController(createStatusProcessUseCase, listStatusProcessUseCase, updatStatusProcessUseCase, deleteStatusProcessUseCase);
+const statusProcessController = new StatusProcessController(
+  createStatusProcessUseCase,
+  listStatusProcessUseCase,
+  updatStatusProcessUseCase,
+  deleteStatusProcessUseCase,
+);
 
 /**
  * @swagger
