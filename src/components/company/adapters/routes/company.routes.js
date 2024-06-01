@@ -13,8 +13,12 @@ const createCompanyUseCase = new CreateCompanyUseCase(companyRepository);
 const listCompanyUseCase = new ListCompanyUseCase(companyRepository);
 const updateCompanyUseCase = new UpdateCompanyUseCase(companyRepository);
 const deleteCompanyUseCase = new DeleteCompanyUsecase(companyRepository);
-const companynController = new CompanyController(createCompanyUseCase, listCompanyUseCase, updateCompanyUseCase, deleteCompanyUseCase);
-
+const companyController = new CompanyController(
+  createCompanyUseCase,
+  listCompanyUseCase,
+  updateCompanyUseCase,
+  deleteCompanyUseCase,
+);
 
 /**
  * @swagger
@@ -42,7 +46,7 @@ const companynController = new CompanyController(createCompanyUseCase, listCompa
  *                example: 12-07-2023
  *              address:
  *                 type: string
- *                 example: cra2-02-19 
+ *                 example: cra2-02-19
  *              phone:
  *                 type: int
  *                 example: 2134565342
@@ -56,10 +60,8 @@ const companynController = new CompanyController(createCompanyUseCase, listCompa
  *             description: Server error
  */
 router.post('/', async (req, res) => {
-    await companynController.insertCompany(req, res);
+  await companyController.insertCompany(req, res);
 });
-
-
 
 /**
  * @swagger
@@ -92,17 +94,17 @@ router.post('/', async (req, res) => {
  *                   example: 12-07-2023
  *                  address:
  *                   type: string
- *                   example: cra2-02-19 
+ *                   example: cra2-02-19
  *                  phone:
  *                   type: int
  *                   example: 2134565342
  *                  email:
  *                   type: string
  *                   example: bbva@gmail.com
- *        
+ *
  */
 router.get('/', async (req, res) => {
-    await companyController.listAllCompany(req, res);
+  await companyController.listAllCompany(req, res);
 });
 
 /**
@@ -131,14 +133,14 @@ router.get('/', async (req, res) => {
  *                example: 12-07-2023
  *              address:
  *                 type: string
- *                 example: cra2-02-19 
+ *                 example: cra2-02-19
  *              phone:
  *                 type: int
  *                 example: 2134565342
  *              email:
  *                 type: string
  *                 example: bbva@gmail.com
- *              
+ *
  *     responses:
  *          '200':
  *             description: company created
@@ -146,9 +148,8 @@ router.get('/', async (req, res) => {
  *             description: Server error
  */
 router.put('/', async (req, res) => {
-    await companynController.updateCompnayInfo(req, res);
+  await companyController.updateCompanyInfo(req, res);
 });
-
 
 /**
  * @swagger
@@ -174,7 +175,7 @@ router.put('/', async (req, res) => {
  *         description: Server internal error
  */
 router.delete('/:id', async (req, res) => {
-    await companynController.deleteCompanyById(req, res);
+  await companyController.deleteCompanyById(req, res);
 });
 
 module.exports = router;
