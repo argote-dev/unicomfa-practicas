@@ -39,6 +39,7 @@ const options = {
     `${__dirname}/components/faculty/adapters/routes/faculty.routes.js`,
     `${__dirname}/components/typeDepartment/adapters/routes/typeDepartment.routes.js`,
     `${__dirname}/components/typeMunicipality/adapters/routes/typeMunicipality.routes.js`,
+    `${__dirname}/components/process/adapters/routes/process.routes.js`,
   ],
 };
 

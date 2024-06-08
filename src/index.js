@@ -22,6 +22,7 @@ app.use('/api/v1/upload-pdf', require('./components/uploadFiles/adapters/routes/
 app.use('/api/v1/faculty', require('./components/faculty/adapters/routes/faculty.routes'));
 app.use('/api/v1/typeDepartment', require('./components/typeDepartment/adapters/routes/typeDepartment.routes'));
 app.use('/api/v1/typeMunicipality', require('./components/typeMunicipality/adapters/routes/typeMunicipality.routes'));
+app.use('/api/v1/process', require('./components/process/adapters/routes/process.routes'));
 
 app.on('error', (error) => {
   console.log(`❌ ${error}`);
