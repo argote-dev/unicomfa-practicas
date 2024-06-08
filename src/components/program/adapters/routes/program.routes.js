@@ -2,17 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const ProgramRepository = require('../repository/program.repository');
-const CreateProgtamUseCase = require('../../usecase/create.usecase');
+const CreateProgramUseCase = require('../../usecase/create.usecase');
 const ListProgramUseCase = require('../../usecase/list.usecase');
 const UpdateProgramUseCase = require('../../usecase/update.usecase');
 const DeleteProgramUsecase = require('../../usecase/delete.usecase');
 const ProgramController = require('../controller/program.controller');
 
-const userRepository = new ProgramRepository();
-const createProgramUseCase = new CreateProgtamUseCase(userRepository);
-const listProgramUseCase = new ListProgramUseCase(userRepository);
-const updatProgramUseCase = new UpdateProgramUseCase(userRepository);
-const deleteProgramUseCase = new DeleteProgramUsecase(userRepository);
+const programRepository = new ProgramRepository();
+const createProgramUseCase = new CreateProgramUseCase(programRepository);
+const listProgramUseCase = new ListProgramUseCase(programRepository);
+const updatProgramUseCase = new UpdateProgramUseCase(programRepository);
+const deleteProgramUseCase = new DeleteProgramUsecase(programRepository);
 const programController = new ProgramController(
   createProgramUseCase,
   listProgramUseCase,

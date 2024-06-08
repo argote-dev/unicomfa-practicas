@@ -16,7 +16,7 @@ module.exports = class ProgramRepository {
     });
   };
   delete = async (id) => {
-    await prisma.program.delete.delete({
+    await prisma.program.delete({
       where: {
         id: id,
       },
